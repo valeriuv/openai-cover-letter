@@ -1,3 +1,16 @@
 from django.db import models
+from accounts.models import CustomUser
 
-# Create your models here.
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return "user_{0}/{1}".format(instance.user.id, filename)
+
+class Application(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    name = models.CharField(max_length=300)
+    job_title = models.CharField(max_length=200)
+    job_description = models.CharField(max_length=5000)
+    cv = models.FileField(upload_to=user_directory_path, max_length=250)
+
+    def __str__(self):
+        return self.job_title

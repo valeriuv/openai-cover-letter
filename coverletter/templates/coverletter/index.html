@@ -3,54 +3,68 @@
 
 
 {% block title %}
-    Generate cover letter
+  Generate cover letter
 {% endblock title %}
 
 {% block content %}
 
 
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
 
-          <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 mb-3">Cover letter generator</h1>
-            <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-          </div>
-
-          <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-1 bg-light" method="POST">
-                {% csrf_token %}
-              <div class="form-floating mb-3 border border-light">
-                {{ form.first_name }}
-                <label for="floatingInput">First name</label>
-              </div>
-              <div class="form-floating mb-3">
-                {{ form.last_name }}
-                <label for="floatingInput">Last name</label>
-              </div>
-              <div class="form-floating mb-3">
-                {{ form.company }}
-                <label for="floatingInput">Company</label>
-              </div>
-              <div class="form-floating mb-3">
-                {{ form.position }} 
-                <label for="floatingInput">Position</label>
-              </div>
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-
-
-        {% if cover_letter_text %}
-            <div class="bg-dark text-secondary row align-items-center g-lg-5 p-5 mt-3">
-                <h1 class="display-5 fw-bold text-white lh-1">Your cover letter</h1>
-                <div style="white-space: pre-wrap;" class="container">
-                    <p class="fs-5 mb-4">{{ cover_letter_text }}</p>
-                </div>
-            </div>
-        {% endif %}
+    <div class="col-lg-5 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 mb-3">Cover letter generator</h1>
+      <p class="col-lg-10 fs-4">Introducing the ultimate time-saving tool for job seekers! Effortlessly tailor your applications to each job listing, and stand out from the competition with our easy-to-use, customized cover letter generator.</p>
     </div>
+
+    <div class="col-lg-7 col-md-10 mx-auto">
+      <form class="p-3 p-md-5 border rounded-1 bg-light" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="form-floating mb-3 border border-light">
+          {{ form.first_name }}
+          <label for="first_name">First name</label>
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.last_name }}
+          <label for="last_name">Last name</label>
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.company }}
+          <label for="company">Company</label>
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.position }} 
+          <label for="position">Job title</label>
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.job_description }} 
+          <label for="description">Job description</label>
+        </div>
+        <div class="mb-4">
+          <label for="cv">Upload CV</label>
+          {{ form.cv }}
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Generate cover letter</button>
+      </form>
+    </div>
+
+    <div class="text-center mt-3 not-visible" id="spinner">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div id="cover-letter">
+      {% if cover_letter_text %}
+          <div class="bg-dark text-secondary row align-items-center g-lg-5 p-5 mt-3">
+              <h1 class="display-5 fw-bold text-white lh-1">Your cover letter</h1>
+              <div style="white-space: pre-wrap;" class="container">
+                  <p class="fs-5 mb-4">{{ cover_letter_text }}</p>
+              </div>
+          </div>
+      {% endif %}
+    </div>
+
+  </div>
 
 
 {% endblock content %}
