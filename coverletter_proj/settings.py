@@ -160,4 +160,4 @@ EMAIL_HOST = str(os.getenv('BREVO_SMTP_SERVER'))
 EMAIL_PORT = str(os.getenv('BREVO_PORT'))
 EMAIL_HOST_USER = str(os.getenv('BREVO_LOGIN'))
 EMAIL_HOST_PASSWORD = str(os.getenv('BREVO_SMTP_KEY'))
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = str(os.getenv('BREVO_USE_TLS'))
