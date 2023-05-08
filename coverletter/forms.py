@@ -17,9 +17,16 @@ class InputForm(forms.Form):
         self.helper = FormHelper()
 
 class ApplicationForm(forms.ModelForm):
+    #user = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User', 'class': 'form-control', 'id': 'user'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Application name', 'class': 'form-control', 'id': 'name'}))
+    company = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Company', 'class': 'form-control', 'id': 'company'}))
+    job_title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Position', 'class': 'form-control', 'id': 'job_title'}))
+    job_description = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Copy and paste the job description here...', 'class': 'form-control', 'id': 'description', 'style': 'height: 100px'}))
+    cv = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control', 'type': 'file' ,'id': 'cv'}))
+    
     class Meta:
         model = Application
-        fields = []
+        fields = ['user', 'name', 'company', 'job_title', 'job_description', 'cv']
 
 
 class RegisterForm(UserCreationForm):

@@ -8,6 +8,7 @@ def user_directory_path(instance, filename):
 class Application(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=300)
+    company = models.CharField(max_length=150)
     job_title = models.CharField(max_length=200)
     job_description = models.CharField(max_length=5000)
     cv = models.FileField(upload_to=user_directory_path, max_length=250)
