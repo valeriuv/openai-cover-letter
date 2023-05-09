@@ -19,10 +19,10 @@
     <div class="col-lg-7 col-md-10 mx-auto">
       <form class="p-3 p-md-5 border rounded-1 bg-light" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
-        <div class="form-floating mb-3 border border-light">
+ {% comment %}        <div class="form-floating mb-3 border border-light">
           {{ form.user }}
           <label for="user">User</label>
-        </div>
+        </div> {% endcomment %}
         <div class="form-floating mb-3">
           {{ form.name }}
           <label for="name">Application name</label>

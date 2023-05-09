@@ -26,7 +26,7 @@ class ApplicationForm(forms.ModelForm):
     
     class Meta:
         model = Application
-        fields = ['user', 'name', 'company', 'job_title', 'job_description', 'cv']
+        fields = ['name', 'company', 'job_title', 'job_description', 'cv']
 
 
 class RegisterForm(UserCreationForm):

@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Application list</h1>
+<h1>Applications</h1>
+
+
+<div class="my-3">
+{% if applications %}
+<ul class="list-group">
+    {% for application in applications %}
+    <li class="list-group-item"><a href="{% url 'application' application.id %}">{{ application.name }}</a> - {{ application.job_title }} - {{ application.company }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+    No applications.
+{% endif %}
+</div>
+
 {% endblock content %}

@@ -12,6 +12,7 @@ class Application(models.Model):
     job_title = models.CharField(max_length=200)
     job_description = models.CharField(max_length=5000)
     cv = models.FileField(upload_to=user_directory_path, max_length=250)
+    cover_letter = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.job_title

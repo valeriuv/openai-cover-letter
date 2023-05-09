@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Application</h1>
+
+
+<div class="my-3">
+<ul class="list-group">
+    <li class="list-group-item">{{ application.name }}</li>
+    <li class="list-group-item">{{ application.company }}</li>
+    <li class="list-group-item">{{ application.job_title }}</li>
+    <li class="list-group-item">{{ application.job_description }}</li>
+    <li class="list-group-item">{{ application.cover_letter }}</li>
+    <li class="list-group-item"><a href="{{application.cv.url}}">{{ application.cv.name }}</a></li>
+</ul>
+</div>
+
+{% endblock content %}
